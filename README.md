@@ -70,6 +70,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 # To run this project
 - clone this repo
 - run `npm install`
-
 - start the server with `npm start`
 - test coverage with `npm t -- --coverage --watchAll=false`
+
