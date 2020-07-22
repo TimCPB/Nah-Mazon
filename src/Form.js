@@ -1,18 +1,36 @@
+// import React from 'react';
+// class Form extends React.Component {
+//
+//   onSubmitFn = (event) => {
+//     console.log(event)
+//   }
+//
+//   render() {
+//     return (
+//       <form onSubmit={this.onSubmitFn}>
+//         <input type='submit'/>
+//       </form>
+//     )
+//
+//   }
+// }
+//
+// export default Form
+
+
 import React from 'react';
-
 class Form extends React.Component {
-
-  onSubmitFn = (event) => {
-    console.log(event)
+  state = { data: {} };
+  onSubmit = e => {
+    e.preventDefault();
+    this.props.onSubmit();
   }
-
   render() {
     return (
-      <form onSubmit={this.onSubmitFn}>
-        <input type='submit'/>
+      <form method="post" onSubmit={this.onSubmit}>
+        <input type="text"/>
       </form>
-    )
-
+    );
   }
 }
 
