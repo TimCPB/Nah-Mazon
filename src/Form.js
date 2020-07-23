@@ -1,20 +1,24 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 
 class Form extends React.Component {
   constructor(props) {
     super(props)
     this.state = { data: '' };
+    this.mySubmittedForm = this.mySubmittedForm.bind(this);
   }
 
-  mySummittedForm = (event) => {
+  mySubmittedForm = (event) => {
     (event).preventDefault();
-    this.props.onSubmit();
+    // this.props.onSubmit();
+    console.log(this.state)
+    this.setState({data: event.target.value});
+    console.log(this.state)
   }
   render() {
     return (
       <div>    
-        <form method="post" onSubmit={this.mySummittedForm}>
+        <form onSubmit={this.mySubmittedForm}>
           <h1>Product Info</h1>
           <input type="text"/>
         </form>
