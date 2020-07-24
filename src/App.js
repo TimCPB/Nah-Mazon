@@ -16,7 +16,7 @@ function App() {
           <Profile />
         </Route>
         <Route path="/">
-          <h1>Welcome to Not Amazon</h1>
+          <h1>Welcome to Nah'mazon</h1>
           <Form />
         </Route>
       </Switch>
