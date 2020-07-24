@@ -46,18 +46,18 @@ class Form extends React.Component {
                 <div className="card" style={{ padding: "25px" }}>
                     <form onSubmit={this.mySubmittedForm}>
                         <h3>Product Info</h3>
-                        <div class="input-field col s6">
+                        <div className="input-field col s6">
                             <input type="text" value={this.state.title} onChange={this.myChangeHandler} id="product_name" className="validate" />
-                            <label for="product_name">Product Title</label>
+                            <label htmlFor="product_name">Product Title</label>
                         </div>
-                        <div class="input-field col s6">
+                        <div className="input-field col s6">
                             <textarea value={this.state.description} onChange={this.myDescHandler} id="product_desc" className="materialize-textarea validate" />
-                            <label for="product_desc">Product description</label>
+                            <label htmlFor="product_desc">Product description</label>
                         </div>
 
-                        <div class="input-field col s6">
+                        <div className="input-field col s6">
                             <input type="number" value={this.state.price} onChange={this.myPriceHandler} placeholder="price" id="product_price" className="validate" />
-                            <label for="product_price">Product price</label>
+                            <label htmlFor="product_price">Product price</label>
                         </div>
                         <br />
                         <input type="submit" value="List item" className="btn" />
