@@ -56,6 +56,7 @@ class Form extends React.Component {
                         </div>
 
                         <div className="input-field col s6">
+                            <span className="prefix" style={{ fontSize: "20px" }}>£</span>
                             <input type="number" value={this.state.price} onChange={this.myPriceHandler} placeholder="price" id="product_price" className="validate" />
                             <label htmlFor="product_price">Product price</label>
                         </div>
