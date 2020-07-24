@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './Form';
 import Profile from './Profile';
+import Navbar from './Navbar';
 import {
   // BrowserRouter as Router,
   Switch,
@@ -10,16 +11,19 @@ import {
 
 function App() {
   return (
-    <div className="App container">
-      <Switch>
-        <Route path="/profile">
-          <Profile />
-        </Route>
-        <Route path="/">
-          <h1>Welcome to Nah'mazon</h1>
-          <Form />
-        </Route>
-      </Switch>
+    <div className="App">
+      <Navbar />
+      <div className="container center-align">
+        <Switch>
+          <Route path="/profile">
+            <Profile />
+          </Route>
+          <Route path="/">
+            <h1>Welcome to Nah'mazon</h1>
+            <Form />
+          </Route>
+        </Switch>
+      </div>
     </div>
   );
 }

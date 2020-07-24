@@ -42,8 +42,8 @@ class Form extends React.Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="card container center-align" style={{ padding: "25px" }}>
+            <div className="container center-align">
+                <div className="card" style={{ padding: "25px" }}>
                     <form onSubmit={this.mySubmittedForm}>
                         <h3>Product Info</h3>
                         <div class="input-field col s6">
