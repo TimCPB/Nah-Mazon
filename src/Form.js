@@ -21,23 +21,33 @@ class Form extends React.Component {
         (event).preventDefault();
         let array = []
         array.push(this.state.data)
-        this.setState({ list: this.state.list.concat(array) });
+        this.setState({ list: this.state.list.concat(array), data: '' });
     }
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <form onSubmit={this.mySubmittedForm}>
-                    <h1>Product Info</h1>
-                    <input type="text" value={this.state.data} onChange={this.myChangeHandler} />
-                    <input type="submit" value="Submit" />
+
+
+                    <h3>Product Info</h3>
+                    <input type="text" value={this.state.data} onChange={this.myChangeHandler} style={{ width: "30%" }} placeholder="product name" />
+                    <input type="submit" value="List item" className="btn" />
                 </form>
                 <p>Product list:</p>
-                <ul>
+                <div className="row">
                     {this.state.list.map((item, index) => (
-                        <li key={index}>{item}</li>
+                        <div key={index} className="card col s12 m3 hoverable center-align" style={{ minHeight: "80px" }}>
+                            <div class="card-content">
+                                <span class="card-title"> {item}</span>
+                            </div>
+                            <div class="card-action">
+                                <span>Some more info</span>
+
+                            </div>
+                        </div>
                     ))}
-                </ul>
+                </div>
             </div>
             // style={{ display: this.state.visible ? "block" : "none" }}
 
