@@ -1,4 +1,6 @@
 import React from 'react';
+import { Modal, Button } from 'react-materialize';
+const trigger = <Button className="btn-floating btn-large waves-effect waves-light"> <i className="material-icons">add</i></Button>;
 // import ReactDOM from 'react-dom';
 
 class Form extends React.Component {
@@ -48,15 +50,29 @@ class Form extends React.Component {
     render() {
         return (
             <div className="container center-align">
-                <a className="btn-floating btn-large waves-effect waves-light teal" onClick={this.showForm}>
-                    {this.state.showForm &&
-                        <i className="material-icons">remove</i>
-                    }
-                    {!this.state.showForm &&
-                        <i className="material-icons">add</i>
-                    }
+                <Modal header="Add a product" trigger={trigger} className="container center-align">
+                    <div style={{ padding: "25px" }}>
+                        <form onSubmit={this.mySubmittedForm}>
 
-                </a>
+                            <div className="input-field col s6">
+                                <input type="text" value={this.state.title} onChange={this.myChangeHandler} id="product_name" className="validate" />
+                                <label htmlFor="product_name">Product Title</label>
+                            </div>
+                            <div className="input-field col s6">
+                                <textarea value={this.state.description} onChange={this.myDescHandler} id="product_desc" className="materialize-textarea validate" />
+                                <label htmlFor="product_desc">Product description</label>
+                            </div>
+
+                            <div className="input-field col s6">
+                                <span className="prefix" style={{ fontSize: "20px" }}>£</span>
+                                <input type="number" value={this.state.price} onChange={this.myPriceHandler} placeholder="price" id="product_price" className="validate" />
+                                <label htmlFor="product_price">Product price</label>
+                            </div>
+                            <br />
+                            <input type="submit" value="List item" className="btn" />
+                        </form>
+                    </div>
+                </Modal>
                 <p>Product list:</p>
                 <div className="row">
                     {this.state.list.map((item, index) => (
@@ -72,30 +88,7 @@ class Form extends React.Component {
                         </div>
                     ))}
                 </div>
-                <div className="card" style={{ padding: "25px", display: this.state.showForm ? "block" : "none" }}>
-                    <form onSubmit={this.mySubmittedForm}>
-                        <h3>Product Info</h3>
-                        <div className="input-field col s6">
-                            <input type="text" value={this.state.title} onChange={this.myChangeHandler} id="product_name" className="validate" />
-                            <label htmlFor="product_name">Product Title</label>
-                        </div>
-                        <div className="input-field col s6">
-                            <textarea value={this.state.description} onChange={this.myDescHandler} id="product_desc" className="materialize-textarea validate" />
-                            <label htmlFor="product_desc">Product description</label>
-                        </div>
-
-                        <div className="input-field col s6">
-                            <span className="prefix" style={{ fontSize: "20px" }}>£</span>
-                            <input type="number" value={this.state.price} onChange={this.myPriceHandler} placeholder="price" id="product_price" className="validate" />
-                            <label htmlFor="product_price">Product price</label>
-                        </div>
-                        <br />
-                        <input type="submit" value="List item" className="btn" />
-                    </form>
-                </div>
-
             </div>
-            // style={{ display: this.state.visible ? "block" : "none" }}
 
         );
     }
