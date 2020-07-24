@@ -8,6 +8,7 @@ class Form extends React.Component {
             title: '',
             price: 0,
             description: '',
+            showForm: false,
             list: []
         };
         this.myChangeHandler = this.myChangeHandler.bind(this);
@@ -40,10 +41,23 @@ class Form extends React.Component {
         this.setState({ list: this.state.list.concat(array), title: '', price: 0, description: '' });
     }
 
+    showForm = () => {
+        this.setState({ showForm: !this.state.showForm })
+    }
+
     render() {
         return (
             <div className="container center-align">
-                <div className="card" style={{ padding: "25px" }}>
+                <a className="btn-floating btn-large waves-effect waves-light teal" onClick={this.showForm}>
+                    {this.state.showForm &&
+                        <i className="material-icons">remove</i>
+                    }
+                    {!this.state.showForm &&
+                        <i className="material-icons">add</i>
+                    }
+
+                </a>
+                <div className="card" style={{ padding: "25px", display: this.state.showForm ? "block" : "none" }}>
                     <form onSubmit={this.mySubmittedForm}>
                         <h3>Product Info</h3>
                         <div className="input-field col s6">
