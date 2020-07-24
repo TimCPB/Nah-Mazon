@@ -57,6 +57,21 @@ class Form extends React.Component {
                     }
 
                 </a>
+                <p>Product list:</p>
+                <div className="row">
+                    {this.state.list.map((item, index) => (
+                        <div key={index} className="card col s12 m3 hoverable center-align" style={{ minHeight: "80px", marginRight: "10px" }}>
+                            <div className="card-content">
+                                <span className="card-title"> {item.title}</span>
+                                <span>{item.description}</span>
+                            </div>
+                            <div className="card-action">
+                                <span style={{ fontWeight: "600" }}> £{item.price}</span>
+
+                            </div>
+                        </div>
+                    ))}
+                </div>
                 <div className="card" style={{ padding: "25px", display: this.state.showForm ? "block" : "none" }}>
                     <form onSubmit={this.mySubmittedForm}>
                         <h3>Product Info</h3>
@@ -78,21 +93,7 @@ class Form extends React.Component {
                         <input type="submit" value="List item" className="btn" />
                     </form>
                 </div>
-                <p>Product list:</p>
-                <div className="row">
-                    {this.state.list.map((item, index) => (
-                        <div key={index} className="card col s12 m3 hoverable center-align" style={{ minHeight: "80px", marginRight: "10px" }}>
-                            <div className="card-content">
-                                <span className="card-title"> {item.title}</span>
-                                <span>{item.description}</span>
-                            </div>
-                            <div className="card-action">
-                                <span style={{ fontWeight: "600" }}> £{item.price}</span>
 
-                            </div>
-                        </div>
-                    ))}
-                </div>
             </div>
             // style={{ display: this.state.visible ? "block" : "none" }}
 
