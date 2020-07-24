@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button } from 'react-materialize';
+import { Modal, Button, Toast } from 'react-materialize';
 const trigger = <Button className="btn-floating btn-large waves-effect waves-light"> <i className="material-icons">add</i></Button>;
 // import ReactDOM from 'react-dom';
 
@@ -13,8 +13,7 @@ class Form extends React.Component {
             showForm: false,
             list: []
         };
-        this.myChangeHandler = this.myChangeHandler.bind(this);
-        this.mySubmittedForm = this.mySubmittedForm.bind(this);
+
     }
 
     myChangeHandler = (event) => {
@@ -40,7 +39,7 @@ class Form extends React.Component {
             price: this.state.price,
             description: this.state.description
         })
-        this.setState({ list: this.state.list.concat(array), title: '', price: 0, description: '' });
+        this.setState({ list: this.state.list.concat(array), title: '', price: 0, description: '', showForm: false });
     }
 
     showForm = () => {
@@ -50,7 +49,7 @@ class Form extends React.Component {
     render() {
         return (
             <div className="container center-align">
-                <Modal header="Add a product" trigger={trigger} className="container center-align">
+                <Modal header="Add a product" trigger={trigger} className="container center-align" open={this.state.showForm}>
                     <div style={{ padding: "25px" }}>
                         <form onSubmit={this.mySubmittedForm}>
 
@@ -69,7 +68,16 @@ class Form extends React.Component {
                                 <label htmlFor="product_price">Product price</label>
                             </div>
                             <br />
-                            <input type="submit" value="List item" className="btn" />
+                            <Toast
+                                className="transparent z-depth-0"
+                                options={{
+                                    html: 'Item listed!'
+                                }}
+                            >
+
+
+                                <input type="submit" value="List item" className="btn" />
+                            </Toast>
                         </form>
                     </div>
                 </Modal>
