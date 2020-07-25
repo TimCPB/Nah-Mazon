@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from './Form';
+import Map from './Map';
 
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <div className="App">
       <h1>Welcome to Not Amazon</h1>
       <Form />
+      <Map />
     </div>
   );
 }
