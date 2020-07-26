@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import ReactMapGL from 'react-map-gl';
+import ReactMapGL, {Marker} from 'react-map-gl';
 
 export default function Map() {
   const [viewport, setViewport] = useState({
@@ -9,6 +9,11 @@ export default function Map() {
     longitude: -0.120455,
     zoom: 12,
   })
+
+  var markerCords=[
+    51.505970,
+    -0.120455
+  ];
 
 
   return (
@@ -22,6 +27,9 @@ export default function Map() {
           setViewport(viewport);
         }}
         >
+        <Marker latitude={markerCords[0]} longitude={markerCords[1]}>
+        <img scr="images/location-1.1s-128px.svg" alt= "Icon"></img>
+       </Marker>
       </ReactMapGL>
     </div>
   );
