@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './Form';
 import Profile from './Profile';
 import Navbar from './Navbar';
+import ListProducts from './ListProducts'
 import {
   // BrowserRouter as Router,
   Switch,
@@ -17,6 +18,9 @@ function App() {
         <Switch>
           <Route path="/profile">
             <Profile />
+          </Route>
+          <Route path="/list-products">
+          <ListProducts />
           </Route>
           <Route path="/">
             <h1>Welcome to Nah'mazon</h1>

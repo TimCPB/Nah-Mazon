@@ -47,21 +47,11 @@ class Form extends React.Component {
         this.setState({ showForm: !this.state.showForm })
     }
 
-    mySearchHandler = (e) => {
-        e.preventDefault();
-        this.setState({ search: e.target.value })
-    }
+
 
     render() {
         return (
             <div className="container center-align">
-                <form>
-                    <div className="input-field">
-                        <input id="search" type="search" required value={this.state.search} onChange={this.mySearchHandler} />
-                        <label className="prefix" for="search"><i className="material-icons">search</i></label>
-                        <i className="material-icons">close</i>
-                    </div>
-                </form>
                 <Modal header="Add a product" trigger={trigger} className="container center-align" open={this.state.showForm}>
                     <div style={{ padding: "25px" }}>
                         <form onSubmit={this.mySubmittedForm}>
@@ -92,21 +82,6 @@ class Form extends React.Component {
                         </form>
                     </div>
                 </Modal>
-                <p>Product list:</p>
-                <div className="row">
-                    {this.state.list.filter(item => item.title.toLocaleLowerCase().includes(this.state.search.toLocaleLowerCase())).map((item, index) => (
-                        <div key={index} className="card col s12 m3 hoverable center-align" style={{ minHeight: "80px", marginRight: "10px", cursor: "pointer" }}>
-                            <div className="card-content">
-                                <span className="card-title"> {item.title}</span>
-                                <span>{item.description}</span>
-                            </div>
-                            <div className="card-action">
-                                <span style={{ fontWeight: "600" }}> £{item.price}</span>
-
-                            </div>
-                        </div>
-                    ))}
-                </div>
             </div>
 
         );
