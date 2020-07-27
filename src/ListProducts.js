@@ -4,6 +4,7 @@ class ListProducts extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      toggle: true,
       search: '',
       list: [{ title: 'Table', description: 'A nice table', price: 12, id: 1 }, { title: 'Chair', description: 'A nice chair', price: 2, id: 2 }, { title: 'Hammer', description: 'A nice hammer', price: 20, id: 3 }, { title: 'Sofa', description: 'A nice sofa', price: 45, id: 4 }]
     }
@@ -17,9 +18,18 @@ class ListProducts extends React.Component {
 
   sortByPrice = (e) => {
     e.preventDefault();
-    var sortedList = this.state.list.sort((product1, product2) => product1.price - product2.price)
+    this.toggle()
+    if(this.state.toggle){
+      var sortedList = this.state.list.sort((product1, product2) => product1.price - product2.price)
+    }
+    else {
+      var sortedList = this.state.list.sort((product1, product2) => product2.price - product1.price)
+    }
     this.setState({ list: sortedList })
+  }
 
+  toggle = () => {
+    this.setState({toggle: !this.state.toggle})
   }
 
   render() {
@@ -33,7 +43,7 @@ class ListProducts extends React.Component {
           </div>
         </form>
         <p>Product list:</p>
-        <button className="btn" type="button" onClick={this.sortByPrice}> sort by price </button>
+        <button className="btn" type="button" onClick= {this.sortByPrice}> sort by price </button>
         <div className="row">
           {this.state.list.filter(item => item.title.toLocaleLowerCase().includes(this.state.search.toLocaleLowerCase())).map((item, index) => (
             <div key={index} className="card col s12 m3 hoverable center-align" style={{ minHeight: "80px", marginRight: "10px", cursor: "pointer" }}>
