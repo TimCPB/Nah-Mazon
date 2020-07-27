@@ -26,6 +26,7 @@ class ListProducts extends React.Component {
           </div>
         </form>
         <p>Product list:</p>
+        <button> sort by price </button> 
         <div className="row">
           {this.state.list.filter(item => item.title.toLocaleLowerCase().includes(this.state.search.toLocaleLowerCase())).map((item, index) => (
             <div key={index} className="card col s12 m3 hoverable center-align" style={{ minHeight: "80px", marginRight: "10px", cursor: "pointer" }}>
