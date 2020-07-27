@@ -20,4 +20,30 @@ router.route('/add').post((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/:id').get((req, res) => {
+  Business.findById(req.params.id)
+    .then(business => res.json(business))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/:id').delete((req, res) => {
+  Business.findByIdAndDelete(req.params.id)
+    .then(() => res.json('Your business has been deleted.'))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/update/:id').post((req, res) => {
+  Business.findById(req.params.id)
+    .then(business => {
+      business.name = req.body.username;
+      business.description = req.body.description;
+      business.postcode = Number(req.body.duration);
+
+      business.save()
+        .then(() => res.json('Your business has been updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
 module.exports = router;
