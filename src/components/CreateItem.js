@@ -3,7 +3,7 @@ import { Modal, Button, Toast } from 'react-materialize';
 import axios from 'axios';
 const trigger = <Button className="btn-floating btn-large waves-effect waves-light"> <i className="material-icons">add</i></Button>;
 
-class Form extends React.Component {
+class CreateItem extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -87,4 +87,4 @@ class Form extends React.Component {
     }
 }
 
-export default Form
+export default CreateItem

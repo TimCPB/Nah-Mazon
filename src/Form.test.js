@@ -6,7 +6,7 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
-import Form from './Form';
+import CreateItem from './components/CreateItem';
 
 it('calls onSubmit prop function when form is submitted', () => {
   const onSubmitFn = jest.fn();

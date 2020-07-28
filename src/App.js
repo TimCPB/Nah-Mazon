@@ -1,12 +1,11 @@
 import React from 'react';
-import Form from './Form';
 import Profile from './Profile';
 import ListProducts from './ListProducts'
 import {
-  // BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
+import CreateItem from './components/CreateItem';
 
 
 function App() {
@@ -22,7 +21,7 @@ function App() {
           </Route>
           <Route path="/">
             <h1>Welcome to Nah'mazon</h1>
-            <Form />
+            <CreateItem />
           </Route>
         </Switch>
       </div>
