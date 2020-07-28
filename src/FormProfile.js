@@ -33,8 +33,8 @@ class FormProfile extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Enter your business details bellow</h2>
+      <div className="card" style={{ padding: "15px" }}>
+        <h3>Enter your business details bellow</h3>
         <form onSubmit={this.updateDetails}>
           <div className="input-field col s6">
             <input type="text" id="business_name" className="validate" value={this.state.name} onChange={this.setBusinessName} />
@@ -50,7 +50,7 @@ class FormProfile extends React.Component {
             <input type="text" id="business_address" className="validate" value={this.state.address} onChange={this.setBusinessAddress} />
             <label htmlFor="business_addres">Business Address</label>
           </div>
-          <input type="submit" value="update" />
+          <input type="submit" value="update" className="btn" />
         </form>
       </div>
 
