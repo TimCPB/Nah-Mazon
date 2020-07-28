@@ -1,6 +1,6 @@
 import React from 'react';
-import Profile from './Profile';
-import ListProducts from './ListProducts'
+import Profile from './components/Profile';
+import ListProducts from './components/ListProducts'
 import {
   Switch,
   Route
