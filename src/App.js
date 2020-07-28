@@ -1,12 +1,11 @@
 import React from 'react';
-import Form from './Form';
-import Profile from './Profile';
-import ListProducts from './ListProducts'
+import BusinessProfile from './components/BusinessProfile';
+import ListAllItems from './components/ListAllItems'
 import {
-  // BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
+import CreateItem from './components/CreateItem';
 
 
 function App() {
@@ -14,15 +13,15 @@ function App() {
     <div className="App">
       <div className="container center-align">
         <Switch>
-          <Route path="/profile/:id">
-            <Profile />
+          <Route path="/business-profile/:id">
+            <BusinessProfile />
           </Route>
-          <Route path="/list-products">
-            <ListProducts />
+          <Route path="/list-items">
+            <ListAllItems />
           </Route>
           <Route path="/">
             <h1>Welcome to Nah'mazon</h1>
-            <Form />
+            <CreateItem />
           </Route>
         </Switch>
       </div>
