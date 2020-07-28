@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import ReactMapGL, {Marker} from 'react-map-gl';
+// import marker_image from '../public/images/public/images/marker_icon2.png'
+import logo from './logo.png'
 
 export default function Map() {
   const [viewport, setViewport] = useState({
@@ -32,7 +34,7 @@ export default function Map() {
         }}
         >
         <Marker latitude={markerCords[0]} longitude={markerCords[1]}>
-        <img scr="images/location-1.1s-128px.svg" alt= "Icon"></img>
+        <img className ="logo" scr="public/images/marker_icon2.png"></img>
        </Marker>
       </ReactMapGL>
     </div>
