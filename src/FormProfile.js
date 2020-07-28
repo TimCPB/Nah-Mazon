@@ -1,4 +1,5 @@
 import React from 'react';
+import { Toast } from 'react-materialize';
 
 class FormProfile extends React.Component {
   constructor(props) {
@@ -52,7 +53,6 @@ class FormProfile extends React.Component {
                     <label htmlFor="business_desc">Business description</label>
                   </div>
                 </div>
-
                 <div className="row">
                   <div className="input-field col s6">
                     <input type="text" id="business_address" className="validate" value={this.state.address} onChange={this.setBusinessAddress} />
@@ -60,24 +60,33 @@ class FormProfile extends React.Component {
                   </div>
                 </div>
                 <div className="row">
-                  <button className='btn' type="submit">Update</button>
+                <Toast
+                    className="transparent z-depth-0"
+                    options={{
+                        html: 'Details updated!'
+                    }}
+                >
+                    <button className='btn' type="submit">Update</button>
+                </Toast>
                 </div>
-
-
-
-
               </form>
             </div>
           </div>
-
           <div className="col s4">
             <div className="card" style={{ padding: "10px", minHeight: "378px" }}>
               <h6>Your business details</h6>
               <ul>
                 <li class="collection-item avatar">
-
                   <i class="material-icons circle">account_circle</i>
                   <span class="title">{this.state.name}</span>
+                </li>
+                <li class="collection-item avatar">
+                  <i class="material-icons circle">create</i>
+                  <span class="title">{this.state.description}</span>
+                </li>
+                <li class="collection-item avatar">
+                  <i class="material-icons circle">person_pin_circle</i>
+                  <span class="title">{this.state.address}</span>
                 </li>
               </ul>
             </div>

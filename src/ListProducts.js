@@ -19,11 +19,12 @@ class ListProducts extends React.Component {
   sortByPrice = (e) => {
     e.preventDefault();
     this.toggle()
+    var sortedList = []
     if(this.state.toggle){
-      var sortedList = this.state.list.sort((product1, product2) => product1.price - product2.price)
+      sortedList = this.state.list.sort((product1, product2) => product1.price - product2.price)
     }
     else {
-      var sortedList = this.state.list.sort((product1, product2) => product2.price - product1.price)
+      sortedList = this.state.list.sort((product1, product2) => product2.price - product1.price)
     }
     this.setState({ list: sortedList })
   }
