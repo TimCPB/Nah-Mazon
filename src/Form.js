@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, Button, Toast } from 'react-materialize';
+import axios from 'axios';
 const trigger = <Button className="btn-floating btn-large waves-effect waves-light"> <i className="material-icons">add</i></Button>;
 // import ReactDOM from 'react-dom';
 
@@ -12,7 +13,7 @@ class Form extends React.Component {
             description: '',
             showForm: false,
             search: '',
-            list: [{ title: 'Table', description: 'A nice table', price: '12', id: 1 }, { title: 'Chair', description: 'A nice chair', price: '2', id: 2 }, { title: 'Hammer', description: 'A nice hammer', price: '20', id: 3 }, { title: 'Sofa', description: 'A nice sofa', price: '45', id: 4 }]
+            // list: [{ title: 'Table', description: 'A nice table', price: '12', id: 1 }, { title: 'Chair', description: 'A nice chair', price: '2', id: 2 }, { title: 'Hammer', description: 'A nice hammer', price: '20', id: 3 }, { title: 'Sofa', description: 'A nice sofa', price: '45', id: 4 }]
         };
 
     }
@@ -40,8 +41,13 @@ class Form extends React.Component {
             price: this.state.price,
             description: this.state.description
         })
+
         this.setState({ list: this.state.list.concat(array), title: '', price: 0, description: '', showForm: false });
+
+
+        // axios.post('http://localhost:5000/items/add', item)
     }
+
 
     showForm = () => {
         this.setState({ showForm: !this.state.showForm })
