@@ -16,7 +16,6 @@ class ListProducts extends React.Component {
     axios.get('http://localhost:5000/items/')
       .then(response => {
         this.setState({list: response.data })
-        console.log(response.data)
       })
       .catch((error) => {
         console.log(error);

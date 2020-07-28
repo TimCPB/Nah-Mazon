@@ -40,8 +40,7 @@ class Form extends React.Component {
         }
 
         axios.post('http://localhost:5000/items/add', item)
-            .then(res => console.log(res.data));
-
+         
         this.setState({
             title: '',
             description: '',
