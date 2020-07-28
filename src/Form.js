@@ -35,17 +35,29 @@ class Form extends React.Component {
 
     mySubmittedForm = (event) => {
         (event).preventDefault();
-        let array = []
-        array.push({
+        // let array = []
+        // array.push({
+        //     title: this.state.title,
+        //     price: this.state.price,
+        //     description: this.state.description
+        // })
+
+        // this.setState({ list: this.state.list.concat(array), title: '', price: 0, description: '', showForm: false });
+
+        const item = {
             title: this.state.title,
+            description: this.state.description,
             price: this.state.price,
-            description: this.state.description
+        }
+
+        axios.post('http://localhost:5000/items/add', item)
+            .then(res => console.log(res.data));
+
+        this.setState({
+            title: '',
+            description: '',
+            price: 0
         })
-
-        this.setState({ list: this.state.list.concat(array), title: '', price: 0, description: '', showForm: false });
-
-
-        // axios.post('http://localhost:5000/items/add', item)
     }
 
 
