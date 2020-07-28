@@ -16,7 +16,7 @@ function App() {
       <Navbar />
       <div className="container center-align">
         <Switch>
-          <Route path="/profile">
+          <Route path="/profile/:id">
             <Profile />
           </Route>
           <Route path="/list-products">
