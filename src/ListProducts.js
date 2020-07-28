@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class ListProducts extends React.Component {
   constructor(props) {
@@ -6,8 +7,20 @@ class ListProducts extends React.Component {
     this.state = {
       toggle: true,
       search: '',
-      list: [{ title: 'Table', description: 'A nice table', price: 12, id: 1 }, { title: 'Chair', description: 'A nice chair', price: 2, id: 2 }, { title: 'Hammer', description: 'A nice hammer', price: 20, id: 3 }, { title: 'Sofa', description: 'A nice sofa', price: 45, id: 4 }]
+      list: []
     }
+  }
+
+  componentDidMount() {
+
+    axios.get('http://localhost:5000/items/')
+      .then(response => {
+        this.setState({list: response.data })
+        console.log(response.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   }
 
   mySearchHandler = (e) => {
