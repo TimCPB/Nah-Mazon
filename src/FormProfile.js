@@ -60,14 +60,14 @@ class FormProfile extends React.Component {
                   </div>
                 </div>
                 <div className="row">
-                <Toast
+                  <Toast
                     className="transparent z-depth-0"
                     options={{
-                        html: 'Details updated!'
+                      html: 'Details updated!'
                     }}
-                >
-                    <button className='btn' type="submit">Update</button>
-                </Toast>
+                  >
+                    <input className='btn' type="submit" value="update" />
+                  </Toast>
                 </div>
               </form>
             </div>
@@ -76,17 +76,17 @@ class FormProfile extends React.Component {
             <div className="card" style={{ padding: "10px", minHeight: "378px" }}>
               <h6>Your business details</h6>
               <ul>
-                <li class="collection-item avatar">
-                  <i class="material-icons circle">account_circle</i>
-                  <span class="title">{this.state.name}</span>
+                <li className="collection-item avatar">
+                  <i className="material-icons circle">account_circle</i>
+                  <span className="title">{this.state.name}</span>
                 </li>
-                <li class="collection-item avatar">
-                  <i class="material-icons circle">create</i>
-                  <span class="title">{this.state.description}</span>
+                <li className="collection-item avatar">
+                  <i className="material-icons circle">create</i>
+                  <span className="title">{this.state.description}</span>
                 </li>
-                <li class="collection-item avatar">
-                  <i class="material-icons circle">person_pin_circle</i>
-                  <span class="title">{this.state.address}</span>
+                <li className="collection-item avatar">
+                  <i className="material-icons circle">person_pin_circle</i>
+                  <span className="title">{this.state.address}</span>
                 </li>
               </ul>
             </div>
