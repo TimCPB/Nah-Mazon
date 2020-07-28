@@ -1,8 +1,16 @@
 import React from 'react';
+import FormProfile from './FormProfile';
 
 class Profile extends React.Component {
-  render () {
-    return <h1>Profile page made with a component</h1>
+  render() {
+    return (
+
+      <div>
+        <h1>Profile page made with a component</h1>
+        <FormProfile />
+      </div>
+
+    )
   }
 }
 
