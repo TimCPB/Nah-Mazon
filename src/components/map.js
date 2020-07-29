@@ -34,7 +34,7 @@ export default function Map() {
         }}
         >
         <Marker latitude={markerCords[0]} longitude={markerCords[1]}>
-        <img src={pin} alt="Pin" class="center" width="27" height="43"/>
+        <img src={pin} alt="Pin" className="center" width="27" height="43"/>
        </Marker>
       </ReactMapGL>
     </div>
