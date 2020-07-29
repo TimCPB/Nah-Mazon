@@ -22,8 +22,6 @@ export default function Map() {
 
   return (
     <div>
-    <h2>It's a map</h2><
-    h3>What's your location?</h3>
       <ReactMapGL
         {...viewport}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}

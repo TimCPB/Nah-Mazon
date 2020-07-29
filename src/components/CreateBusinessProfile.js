@@ -7,7 +7,8 @@ class FormProfile extends React.Component {
     this.state = {
       name: '',
       description: '',
-      address: ''
+      address: '',
+      cords: ''
     }
   }
 
@@ -31,6 +32,10 @@ class FormProfile extends React.Component {
     e.preventDefault();
     this.setState({ address: e.target.value })
   }
+  setBusinessCords = (e) => {
+    e.preventDefault();
+    this.setState({ cords: e.target.value })
+  }
 
   render() {
     return (
@@ -47,7 +52,6 @@ class FormProfile extends React.Component {
                     <input type="text" id="business_name" className="validate" value={this.state.name} onChange={this.setBusinessName} />
                     <label htmlFor="business_name">Business Name</label>
                   </div>
-
                   <div className="input-field col s6">
                     <input type="text" id="business_desc" className="validate" value={this.state.description} onChange={this.setBusinessDesc} />
                     <label htmlFor="business_desc">Business description</label>
@@ -57,6 +61,10 @@ class FormProfile extends React.Component {
                   <div className="input-field col s6">
                     <input type="text" id="business_address" className="validate" value={this.state.address} onChange={this.setBusinessAddress} />
                     <label htmlFor="business_addres">Business Address</label>
+                  </div>
+                  <div className="input-field col s6">
+                    <input type="text" id="business_cords" className="validate" value={this.state.cords} onChange={this.setBusinessCords} />
+                    <label htmlFor="business_cords">Business Coordinates</label>
                   </div>
                 </div>
                 <div className="row">
