@@ -55,7 +55,6 @@ class BusinessProfile extends React.Component {
             </div>
           </div>
         </div>
-        <p> {window.location.href.substring(window.location.href.lastIndexOf('/') + 1)}</p>
         <CreateItem business={this.state.business} />
         <BusinessProfileItems />
       </div>
