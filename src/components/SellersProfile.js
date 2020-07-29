@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { useParams } from "react-router";
 import Map from './Map'
-
+import BusinessProfileItems from '../components/BusinessProfileItems'
 class BusinessProfile extends React.Component {
   constructor(props) {
     super(props)
@@ -14,8 +14,6 @@ class BusinessProfile extends React.Component {
   }
 
   componentDidMount() {
-    // console.log(window)
-    // const { match: { params } } = this.props;
     axios.get('http://localhost:5000/businesses/'+window.location.href.substring(window.location.href.lastIndexOf('/') + 1))
       .then(response => {
         this.setState({
@@ -49,6 +47,7 @@ class BusinessProfile extends React.Component {
                 </li>
               </ul>
         <Map postcode={this.state.postcode}/>
+        <p><BusinessProfileItems /></p>
       </div>
 
     )
