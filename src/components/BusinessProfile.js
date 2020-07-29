@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { useParams } from "react-router";
+import Map from './Map'
 
 class BusinessProfile extends React.Component {
   constructor(props) {
@@ -47,10 +48,8 @@ class BusinessProfile extends React.Component {
                   <span className="title">{this.state.postcode}</span>
                 </li>
               </ul>
+        <Map postcode={this.state.postcode}/>
       </div>
-      // <div>
-      //   <ListBusinessItems 
-      // </div>
 
     )
   }
