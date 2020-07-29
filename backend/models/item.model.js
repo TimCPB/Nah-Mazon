@@ -7,7 +7,7 @@ const itemSchema = new Schema({
   description: { type: String, required: true },
   price: { type: Number, required: true },
   businessName: { type: String, required: true },
-  businessID: { type: Number, required: true }
+  businessID: { type: String, required: true }
 }, {
   timestamps: true,
 });

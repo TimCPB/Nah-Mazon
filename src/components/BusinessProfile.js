@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import CreateItem from './CreateItem';
+import BusinessProfileItems from './BusinessProfileItems';
 
 class BusinessProfile extends React.Component {
   constructor(props) {
@@ -55,7 +56,8 @@ class BusinessProfile extends React.Component {
           </div>
         </div>
         <p> {window.location.href.substring(window.location.href.lastIndexOf('/') + 1)}</p>
-        <CreateItem />
+        <CreateItem business={this.state.business} />
+        <BusinessProfileItems />
       </div>
 
     )
