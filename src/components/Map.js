@@ -29,7 +29,23 @@ class Map extends React.Component {
   //   //setViewport lat and long
   // ]
 
-  
+componentDidMount() {
+  console.log("hello")
+  var PostcodesIO = require('postcodesio-client');
+  var postcodes = new PostcodesIO();
+  postcodes.lookup('se1 2nx').then(postcode => {
+    console.log(postcode);
+    console.log(this.props.postcode)
+  	// {
+  	//   "postcode": "EC1V 9LB",
+  	//   "admin_district": "Islington",
+  	//   "longitude": -0.091247681768113,
+  	//   "latitude": 51.5278436902703,
+  	//   "region": "London",
+  	//   ...
+  	// }
+  });
+}
 
 
     render() {
@@ -47,6 +63,7 @@ class Map extends React.Component {
           <img src={pin} alt="Pin" className="center" width="27" height="43"/>
          </Marker>
         </ReactMapGL>
+        <h1>The postcode is {this.props.postcode}</h1>
       </div>
       )
     }
