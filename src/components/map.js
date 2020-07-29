@@ -2,14 +2,31 @@ import React, {useState} from 'react';
 import ReactMapGL, {Marker} from 'react-map-gl';
 import pin from '../images/pin3.png';
 
-export default function Map() {
-  const [viewport, setViewport] = useState({
-    width: 500,
-    height: 500,
-    latitude: 51.5173633,
-    longitude: -0.0755167,
-    zoom: 12,
-  })
+class Map extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      postcode: 'S015 5JU',
+      postcodelookup: {}
+
+
+default function Map() {
+        constructor(props) {
+          super(props)
+          this.state = {
+            postcode: 'S015 5JU',
+            postcodelookup: {}
+          }
+        }
+
+  var PostcodesIO = require('postcodesio-client');
+  var postcodes = new PostcodesIO();
+
+  postcodes.lookup('SO15 5JU').then(postcode => {
+  	console.log(postcode.latitude);
+  });
+
+  // console.log(postcodes.latitude)
 
   var markerCords=[
     // console.log(Form.state)
@@ -34,9 +51,12 @@ export default function Map() {
         }}
         >
         <Marker latitude={markerCords[0]} longitude={markerCords[1]}>
-        <img src={pin} alt="Pin" class="center" width="27" height="43"/>
+        <img src={pin} alt="Pin" className="center" width="27" height="43"/>
        </Marker>
       </ReactMapGL>
     </div>
   );
 }
+}
+
+export default Map
