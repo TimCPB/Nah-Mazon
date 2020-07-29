@@ -1,5 +1,4 @@
 import React from 'react';
-import CreateBusinessProfile from './CreateBusinessProfile';
 
 class BusinessProfile extends React.Component {
   render() {
@@ -7,7 +6,6 @@ class BusinessProfile extends React.Component {
 
       <div>
         <h1>BusinessProfile page made with a component</h1>
-        <CreateBusinessProfile />
       </div>
 
     )
