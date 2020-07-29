@@ -11,17 +11,16 @@ class ListProducts extends React.Component {
         }
     }
 
-    componentDidMount() {
+    componentDidUpdate() {
 
         axios.get('http://localhost:5000/items/')
             .then(response => {
                 var id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1)
-                var myItems = []
-                response.data.forEach((item) => {
-                    if (item._id === id) {
-                        myItems.push(item)
-                    }
+
+                var myItems = response.data.filter((item) => {
+                    return item.businessID === id
                 })
+
                 this.setState({ list: myItems })
             })
             .catch((error) => {
@@ -70,6 +69,7 @@ class ListProducts extends React.Component {
                             <div className="card-content">
                                 <span className="card-title"> {item.title}</span>
                                 <span>{item.description}</span>
+                                <span style={{ fontWeight: "600" }}>{item.businessName}</span>
                             </div>
                             <div className="card-action">
                                 <span style={{ fontWeight: "600" }}> £{item.price}</span>
