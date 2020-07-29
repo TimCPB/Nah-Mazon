@@ -12,6 +12,7 @@ class CreateItem extends React.Component {
             description: '',
             showForm: false,
             search: '',
+            business: {}
         };
     }
 
@@ -34,13 +35,18 @@ class CreateItem extends React.Component {
         (event).preventDefault();
 
         const item = {
+
             title: this.state.title,
             description: this.state.description,
             price: this.state.price,
+            businessName: this.props.business.name,
+            businessID: this.props.business._id
         }
 
+        console.log(item)
+
         axios.post('http://localhost:5000/items/add', item)
-         
+
         this.setState({
             title: '',
             description: '',

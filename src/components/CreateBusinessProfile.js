@@ -1,5 +1,6 @@
 import React from 'react';
 import { Toast } from 'react-materialize';
+import axios from 'axios';
 
 class FormProfile extends React.Component {
   constructor(props) {
@@ -7,14 +8,26 @@ class FormProfile extends React.Component {
     this.state = {
       name: '',
       description: '',
-      address: ''
+      postcode: '',
     }
   }
 
-  updateDetails = (e) => {
+  submitBusinessDetails = (e) => {
     e.preventDefault();
-    console.log(this.state)
 
+
+    const business = {
+      name: this.state.name,
+      description: this.state.description,
+      postcode: this.state.postcode
+    }
+
+    axios.post('http://localhost:5000/businesses/add', business).then(() => {
+      axios.get('http://localhost:5000/businesses')
+        .then((response) => {
+        window.location = `http://localhost:3000/business-profile/${response.data[response.data.length - 1]._id}`
+        })
+    });
   }
 
   setBusinessName = (e) => {
@@ -29,7 +42,7 @@ class FormProfile extends React.Component {
 
   setBusinessAddress = (e) => {
     e.preventDefault();
-    this.setState({ address: e.target.value })
+    this.setState({ postcode: e.target.value })
   }
 
   render() {
@@ -41,7 +54,7 @@ class FormProfile extends React.Component {
 
             <div style={{ padding: "10px", minHeight: "350px" }} className="card">
               <h3>Enter your business details bellow</h3>
-              <form onSubmit={this.updateDetails}>
+              <form onSubmit={this.submitBusinessDetails}>
                 <div className="row">
                   <div className="input-field col s6">
                     <input type="text" id="business_name" className="validate" value={this.state.name} onChange={this.setBusinessName} />
@@ -86,7 +99,7 @@ class FormProfile extends React.Component {
                 </li>
                 <li className="collection-item avatar">
                   <i className="material-icons circle">person_pin_circle</i>
-                  <span className="title">{this.state.address}</span>
+                  <span className="title">{this.state.postcode}</span>
                 </li>
               </ul>
             </div>
