@@ -12,21 +12,21 @@ class BusinessProfile extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   // console.log(this)
-  //   // const { match: { params } } = this.props;
-  //   axios.get('http://localhost:5000/businesses/'+window.location.href.substring(window.location.href.lastIndexOf('/') + 1))
-  //     .then(response => {
-  //       this.setState({
-  //         name: response.data.name,
-  //         description: response.data.description,
-  //         postcode: response.data.postcode
-  //       })   
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     })
-  //   }
+  componentDidMount() {
+    // console.log(window)
+    // const { match: { params } } = this.props;
+    axios.get('http://localhost:5000/businesses/'+window.location.href.substring(window.location.href.lastIndexOf('/') + 1))
+      .then(response => {
+        this.setState({
+          name: response.data.name,
+          description: response.data.description,
+          postcode: response.data.postcode
+        })   
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+    }
 
   render() {
     return (
@@ -47,6 +47,9 @@ class BusinessProfile extends React.Component {
                   <span className="title">{this.state.postcode}</span>
                 </li>
               </ul>
+      </div>
+      <div>
+        <ListBusinessItems 
       </div>
 
     )

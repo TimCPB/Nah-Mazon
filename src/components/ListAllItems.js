@@ -64,7 +64,7 @@ class ListProducts extends React.Component {
               <div className="card-content">
                 <span className="card-title"> {item.title}</span>
                 <span>{item.description}</span>
-                <p><span><Link to={"/business-profile/"+item.businessName}>Sold by {item.businessName}</Link></span></p>
+                <p><span><Link to={"/business-profile/"+item.businessID}>Sold by {item.businessName}</Link></span></p>
               </div>
               <div className="card-action">
                 <span style={{ fontWeight: "600" }}> £{item.price}</span>

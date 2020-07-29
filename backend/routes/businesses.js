@@ -20,8 +20,8 @@ router.route('/add').post((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/:name').get((req, res) => {
-  Business.findById(req.params.name)
+router.route('/:id').get((req, res) => {
+  Business.findById(req.params.id)
     .then(business => res.json(business))
     .catch(err => res.status(400).json('Error: ' + err));
 });
