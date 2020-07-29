@@ -48,9 +48,9 @@ class BusinessProfile extends React.Component {
                 </li>
               </ul>
       </div>
-      <div>
-        <ListBusinessItems 
-      </div>
+      // <div>
+      //   <ListBusinessItems 
+      // </div>
 
     )
   }
