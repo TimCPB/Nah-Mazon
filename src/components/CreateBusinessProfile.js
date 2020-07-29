@@ -12,7 +12,6 @@ class FormProfile extends React.Component {
     }
   }
 
-
   submitBusinessDetails = (e) => {
     e.preventDefault();
 

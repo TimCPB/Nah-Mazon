@@ -12,6 +12,7 @@ class CreateItem extends React.Component {
             description: '',
             showForm: false,
             search: '',
+            business: {}
         };
     }
 
@@ -33,19 +34,31 @@ class CreateItem extends React.Component {
     mySubmittedForm = (event) => {
         (event).preventDefault();
 
-        const item = {
-            title: this.state.title,
-            description: this.state.description,
-            price: this.state.price,
-        }
-
-        axios.post('http://localhost:5000/items/add', item)
-         
-        this.setState({
-            title: '',
-            description: '',
-            price: 0
+    axios.get('http://localhost:5000/businesses/')
+    .then(response => {
+        var id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1)
+        var getBusiness = response.data.find(business => {
+        return business._id === id
         })
+        this.setState({ business: getBusiness })
+    }).then(() => {const item = {
+
+        title: this.state.title,
+        description: this.state.description,
+        price: this.state.price,
+        businessName: this.state.business.name,
+        businessID: this.state.business._id
+    }
+
+    axios.post('http://localhost:5000/items/add', item)
+    
+    this.setState({
+        title: '',
+        description: '',
+        price: 0
+    })   
+})
+        
     }
 
     render() {
