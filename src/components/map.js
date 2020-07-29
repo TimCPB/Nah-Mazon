@@ -15,8 +15,11 @@ export default function Map() {
     // console.log(Form.state)
     // Form.state.coordinates[0],
     // Form.state.coordinates[1]
+
     51.5173633,
     -0.0655167
+    // take cords state from create business profile and split
+    //setViewport lat and long
   ];
 
 
