@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <div className="container center-align">
         <Switch>
-          <Route path="/business-profile/:id">
+          <Route path="/business-profile/:businessName">
             <BusinessProfile />
           </Route>
           <Route path="/list-items">

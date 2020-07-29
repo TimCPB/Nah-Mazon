@@ -2,13 +2,14 @@ import React from 'react';
 import CreateBusinessProfile from './CreateBusinessProfile';
 
 class BusinessProfile extends React.Component {
-  super(props)
-  this.state = {
-    name: "Lamp shop",
-    postcode: '',
-    list: []
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: '',
+      description: '',
+      postcode: '',
+    }
   }
-
 
   render() {
     return (
