@@ -2,6 +2,7 @@ import React from 'react';
 import CreateBusinessProfile from './components/CreateBusinessProfile';
 import BusinessProfile from './components/BusinessProfile';
 import ListAllItems from './components/ListAllItems'
+import SellersProfile from './components/SellersProfile'
 import {
   Switch,
   Route
@@ -22,6 +23,9 @@ function App() {
           </Route>
           <Route path="/list-items">
             <ListAllItems />
+          </Route>
+          <Route path="/sellers-profile/:id">
+            <SellersProfile />
           </Route>
           <Route path="/">
             <h1>Welcome to Nah'mazon</h1>
