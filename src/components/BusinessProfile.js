@@ -5,7 +5,7 @@ class BusinessProfile extends React.Component {
     return (
 
       <div>
-        <h1>BusinessProfile page made with a component</h1>
+        <p> {window.location.href.substring(window.location.href.lastIndexOf('/') + 1)}</p>
       </div>
 
     )
