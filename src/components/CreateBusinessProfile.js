@@ -9,7 +9,6 @@ class FormProfile extends React.Component {
       name: '',
       description: '',
       postcode: '',
-      businesses: []
     }
   }
 
@@ -25,16 +24,11 @@ class FormProfile extends React.Component {
     }
 
     axios.post('http://localhost:5000/businesses/add', business).then(() => {
-      // axios.get('http://localhost:5000/businesses').then((response) => {
-      // this.setState({ businesses: response.data })
-      // console.log(response.data.last)
-      // console.log(this.state.businesses[length - 1])
-      // })
-      // console.log(this.state.newBusiness)
-      // history.push('/')
-      window.location = 'http://localhost:3000/business-profile/';
+      axios.get('http://localhost:5000/businesses')
+        .then((response) => {
+        window.location = `http://localhost:3000/business-profile/${response.data[response.data.length - 1]._id}`
+        })
     });
-
   }
 
   setBusinessName = (e) => {

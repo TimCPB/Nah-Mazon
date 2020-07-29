@@ -17,7 +17,7 @@ function App() {
           <Route path="/create-profile">
             <CreateBusinessProfile />
           </Route>
-          <Route path="/business-profile/">
+          <Route path="/business-profile/:id">
             <BusinessProfile />
           </Route>
           <Route path="/list-items">
