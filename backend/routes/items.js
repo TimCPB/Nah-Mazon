@@ -13,9 +13,9 @@ router.route('/add').post((req, res) => {
   const price = Number(req.body.price);
   const businessName = req.body.businessName;
   const businessID = req.body.businessID;
-  
+
   const newItem = new Item({ title, description, price, businessName, businessID });
-  
+
   newItem.save()
   .then(() => res.json("Your item has been added to Nah'Mazon!"))
   .catch(err => res.status(400).json('Error: ' + err));
