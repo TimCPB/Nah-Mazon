@@ -1,4 +1,5 @@
 import React from 'react';
+import CreateBusinessProfile from './components/CreateBusinessProfile';
 import BusinessProfile from './components/BusinessProfile';
 import ListAllItems from './components/ListAllItems'
 import {
@@ -13,6 +14,9 @@ function App() {
     <div className="App">
       <div className="container center-align">
         <Switch>
+          <Route path="/create-profile">
+            <CreateBusinessProfile />
+          </Route>
           <Route path="/business-profile/:id">
             <BusinessProfile />
           </Route>
