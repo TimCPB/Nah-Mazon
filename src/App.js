@@ -1,6 +1,7 @@
 import React from 'react';
 import BusinessProfile from './components/BusinessProfile';
 import ListAllItems from './components/ListAllItems'
+import Map from './components/Map'
 import {
   Switch,
   Route
@@ -15,6 +16,7 @@ function App() {
         <Switch>
           <Route path="/business-profile/:id">
             <BusinessProfile />
+            <Map />
           </Route>
           <Route path="/list-items">
             <ListAllItems />
