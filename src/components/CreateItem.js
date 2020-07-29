@@ -52,8 +52,6 @@ class CreateItem extends React.Component {
             description: '',
             price: 0
         })
-
-
     }
 
     render() {
