@@ -1,9 +1,6 @@
 import React from 'react';
 import { Toast } from 'react-materialize';
 import axios from 'axios';
-// import {
-//   useHistory
-// } from "react-router-dom";
 
 class FormProfile extends React.Component {
   constructor(props) {
@@ -14,7 +11,6 @@ class FormProfile extends React.Component {
       postcode: '',
       businesses: []
     }
-    // let history = useHistory();
   }
 
 
