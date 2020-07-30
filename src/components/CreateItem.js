@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, Button, Toast } from 'react-materialize';
-import axios from 'axios';
+// import axios from 'axios';
+import db from '../firebase/init';
 const trigger = <Button className="btn-floating btn-large waves-effect waves-light"> <i className="material-icons">add</i></Button>;
 
 class CreateItem extends React.Component {
@@ -34,18 +35,26 @@ class CreateItem extends React.Component {
     mySubmittedForm = (event) => {
         (event).preventDefault();
 
-        const item = {
-
+        db.collection("items").doc().set({
             title: this.state.title,
             description: this.state.description,
             price: this.state.price,
             businessName: this.props.business.name,
-            businessID: this.props.business._id
-        }
+            businessID: this.props.business.slug
+        })
 
-        console.log(item)
+        // const item = {
 
-        axios.post('http://localhost:5000/items/add', item)
+        //     title: this.state.title,
+        //     description: this.state.description,
+        //     price: this.state.price,
+        //     businessName: this.props.business.name,
+        //     businessID: this.props.business._id
+        // }
+
+        // console.log(item)
+
+        // axios.post('http://localhost:5000/items/add', item)
 
         this.setState({
             title: '',

@@ -1,6 +1,7 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { Link } from 'react-router-dom';
+import db from '../firebase/init';
 
 class ListProducts extends React.Component {
   constructor(props) {
@@ -13,14 +14,34 @@ class ListProducts extends React.Component {
   }
 
   componentDidMount() {
+    // var url = ""
 
-    axios.get('http://localhost:5000/items/')
-      .then(response => {
-        this.setState({list: response.data })
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+    // if (process.env.NODE_ENV === 'development') {
+    //   url = 'http://localhost:3000/'
+    // }
+
+    // if (process.env.NODE_ENV === 'production') {
+    //   url = 'https://nah-mazon.web.app/'
+    // }
+
+
+    db.collection("items")
+      .get()
+      .then(querySnapshot => {
+        const items = querySnapshot.docs.map(doc => doc.data());
+        console.log(items);
+        this.setState({ list: items })
+      });
+
+    console.log(this.state.list)
+
+    // axios.get(`http://localhost:5000/items/`)
+    //   .then(response => {
+    //     this.setState({ list: response.data })
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   })
   }
 
   mySearchHandler = (e) => {
@@ -33,7 +54,7 @@ class ListProducts extends React.Component {
     e.preventDefault();
     this.toggle()
     var sortedList = []
-    if(this.state.toggle){
+    if (this.state.toggle) {
       sortedList = this.state.list.sort((product1, product2) => product1.price - product2.price)
     }
     else {
@@ -43,7 +64,7 @@ class ListProducts extends React.Component {
   }
 
   toggle = () => {
-    this.setState({toggle: !this.state.toggle})
+    this.setState({ toggle: !this.state.toggle })
   }
 
   render() {
@@ -57,14 +78,14 @@ class ListProducts extends React.Component {
           </div>
         </form>
         <p>Product list:</p>
-        <button className="btn" type="button" onClick= {this.sortByPrice}> sort by price </button>
+        <button className="btn" type="button" onClick={this.sortByPrice}> sort by price </button>
         <div className="row">
           {this.state.list.filter(item => item.title.toLocaleLowerCase().includes(this.state.search.toLocaleLowerCase())).map((item, index) => (
             <div key={index} className="card col s12 m3 hoverable center-align" style={{ minHeight: "80px", marginRight: "10px", cursor: "pointer" }}>
               <div className="card-content">
                 <span className="card-title"> {item.title}</span>
                 <span>{item.description}</span>
-                <p><span><Link to={"/business-profile/"+item.businessID}>Sold by {item.businessName}</Link></span></p>
+                <p><span><Link to={"/business-profile/" + item.businessID}>Sold by {item.businessName}</Link></span></p>
               </div>
               <div className="card-action">
                 <span style={{ fontWeight: "600" }}> £{item.price}</span>

@@ -1,7 +1,8 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import CreateItem from './CreateItem';
 import BusinessProfileItems from './BusinessProfileItems';
+import db from '../firebase/init';
 
 class BusinessProfile extends React.Component {
   constructor(props) {
@@ -12,17 +13,28 @@ class BusinessProfile extends React.Component {
   }
   componentDidMount() {
 
-    axios.get('http://localhost:5000/businesses/')
-      .then(response => {
-        var id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1)
-        var getBusiness = response.data.find(business => {
-          return business._id === id
-        })
-        this.setState({ business: getBusiness })
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+    const slug = window.location.href.substring(window.location.href.lastIndexOf('/') + 1)
+
+    db.collection("businesses")
+      .where("slug", "==", slug)
+      .get()
+      .then(querySnapshot => {
+        const businesses = querySnapshot.docs.map(doc => doc.data());
+        this.setState({ business: businesses[0] })
+      });
+
+    // axios.get('http://localhost:5000/businesses/')
+    //   .then(response => {
+    //     console.log(response.data)
+    //     var id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1)
+    //     var getBusiness = response.data.find(business => {
+    //       return business._id === id
+    //     })
+    //     this.setState({ business: getBusiness })
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   })
   }
   render() {
     return (

@@ -1,3 +1,5 @@
+import firebase from 'firebase';
+
 var firebaseConfig = {
     apiKey: "AIzaSyChooD8TJNlh_49TpjSMQL4BpXwUPBACt8",
     authDomain: "nah-mazon.firebaseapp.com",
@@ -10,5 +12,8 @@ var firebaseConfig = {
 };
 
 
-firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 firebase.analytics();
+const db = firebaseApp.firestore();
+
+export default db;

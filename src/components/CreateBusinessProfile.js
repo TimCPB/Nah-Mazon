@@ -1,6 +1,8 @@
 import React from 'react';
 import { Toast } from 'react-materialize';
-import axios from 'axios';
+// import axios from 'axios';
+import db from '../firebase/init';
+import slugify from 'slugify';
 
 class FormProfile extends React.Component {
   constructor(props) {
@@ -8,26 +10,52 @@ class FormProfile extends React.Component {
     this.state = {
       name: '',
       description: '',
-      postcode: '',
+      postcode: ''
     }
   }
 
   submitBusinessDetails = (e) => {
     e.preventDefault();
+    var url = ""
 
-
-    const business = {
-      name: this.state.name,
-      description: this.state.description,
-      postcode: this.state.postcode
+    if (process.env.NODE_ENV === 'development') {
+      url = 'http://localhost:3000/'
     }
 
-    axios.post('http://localhost:5000/businesses/add', business).then(() => {
-      axios.get('http://localhost:5000/businesses')
-        .then((response) => {
-        window.location = `http://localhost:3000/business-profile/${response.data[response.data.length - 1]._id}`
-        })
+    if (process.env.NODE_ENV === 'production') {
+      url = 'https://nah-mazon.web.app/'
+    }
+
+    const slug = slugify(this.state.name, {
+      replacement: "-",
+      remove: /[*+~.()'"!:@]/g,
+      lower: true
     });
+
+    db.collection("businesses").doc().set({
+      name: this.state.name,
+      description: this.state.description,
+      postcode: this.state.postcode,
+      slug: slug
+    }).then(() => {
+      window.location = `${url}business-profile/${slug}`
+    });
+
+
+    // const business = {
+    //   name: this.state.name,
+    //   description: this.state.description,
+    //   postcode: this.state.postcode
+    // }
+
+    // axios.post('http://localhost:5000/items/add', item)
+    // axios.post(`http://localhost:5000/businesses/add`, business).then(() => {
+    //   axios.get(`http://localhost:5000/businesses`)
+    //     .then((response) => {
+    //       console.log(response)
+    //       window.location = `${url}business-profile/${response.data[response.data.length - 1]._id}`
+    //     })
+    // });
   }
 
   setBusinessName = (e) => {
