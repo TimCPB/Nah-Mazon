@@ -16,7 +16,6 @@ function App() {
   return (
     <div className="App">
       <div className="container center-align">
-        <Router>
         <Switch>
           <Route path="/create-profile">
             <CreateBusinessProfile />
@@ -35,7 +34,6 @@ function App() {
             <Home />
           </Route>
         </Switch>
-        </Router>
       </div>
     </div>
   );
