@@ -19,7 +19,6 @@ class BusinessProfile extends React.Component {
   componentDidMount() {
     axios.get('http://localhost:5000/businesses/'+window.location.href.substring(window.location.href.lastIndexOf('/') + 1))
       .then(response => {
-        console.log(window)
         var PostcodesIO = require('postcodesio-client');
         var postcodes = new PostcodesIO();
         postcodes.lookup(response.data.postcode).then(returnPostcode => {
