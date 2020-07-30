@@ -4,14 +4,14 @@
 //
 // const wrapper = shallow(<Form />);
 
-import React from 'react';
-import { mount } from 'enzyme';
-import CreateItem from '../components/CreateItem';
+import React from "react";
+import { mount } from "enzyme";
+import CreateItem from "../components/CreateItem";
 
-it('calls onSubmit prop function when form is submitted', () => {
-  const onSubmitFn = jest.fn();
-  const wrapper = mount(<CreateItem onSubmit={onSubmitFn} />);
-  const form = wrapper.find('form');
-  form.simulate('submit');
-  expect(onSubmitFn).toHaveBeenCalledTimes(1);
+xit("calls onSubmit prop function when form is submitted", () => {
+	const onSubmitFn = jest.fn();
+	const wrapper = mount(<CreateItem onSubmit={onSubmitFn} />);
+	const form = wrapper.find("form");
+	form.simulate("submit");
+	expect(onSubmitFn).toHaveBeenCalledTimes(1);
 });
