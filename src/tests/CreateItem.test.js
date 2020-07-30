@@ -11,6 +11,7 @@ import CreateItem from '../components/CreateItem';
 it('calls onSubmit prop function when form is submitted', () => {
   const onSubmitFn = jest.fn();
   const wrapper = mount(<CreateItem onSubmit={onSubmitFn} />);
+  console.log(wrapper)
   const form = wrapper.find('form');
   form.simulate('submit');
   expect(onSubmitFn).toHaveBeenCalledTimes(1);
