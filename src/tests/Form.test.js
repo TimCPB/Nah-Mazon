@@ -1,8 +1,8 @@
-// import { shallow, mount, render } from 'enzyme';
-//
-// import Form from './Form';
-//
-// const wrapper = shallow(<Form />);
+import { shallow, mount, render } from 'enzyme';
+
+import Form from './Form';
+
+const wrapper = shallow(<Form />);
 
 import React from "react";
 import { mount } from "enzyme";
