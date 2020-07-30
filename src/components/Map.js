@@ -34,8 +34,8 @@ componentDidMount() {
   var PostcodesIO = require('postcodesio-client');
   var postcodes = new PostcodesIO();
   postcodes.lookup('se1 2nx').then(postcode => {
-    console.log(postcode);
-    console.log(this.props.postcode)
+    // console.log(postcode.latitude);
+    // console.log(this.props.postcode)
   	// {
   	//   "postcode": "EC1V 9LB",
   	//   "admin_district": "Islington",
@@ -64,6 +64,7 @@ componentDidMount() {
          </Marker>
         </ReactMapGL>
         <h1>The postcode is {this.props.postcode}</h1>
+        <h2>The latitude is {this.props.latitude}</h2>
       </div>
       )
     }
