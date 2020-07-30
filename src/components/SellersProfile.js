@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
-import { useParams } from "react-router";
-import Map from './Map'
+import ReactMapGL, {Marker} from 'react-map-gl';
+import pin from '../images/pin3.png';
 import BusinessProfileItems from '../components/BusinessProfileItems'
 class BusinessProfile extends React.Component {
   constructor(props) {
@@ -10,20 +10,36 @@ class BusinessProfile extends React.Component {
       name: '',
       description: '',
       postcode: '',
+      latitude: 0,
+      longitude: 0,
+      viewport: {}
     }
   }
 
   componentDidMount() {
     axios.get('http://localhost:5000/businesses/'+window.location.href.substring(window.location.href.lastIndexOf('/') + 1))
       .then(response => {
+        var PostcodesIO = require('postcodesio-client');
+        var postcodes = new PostcodesIO();
+        postcodes.lookup(response.data.postcode).then(returnPostcode => {
         this.setState({
           name: response.data.name,
           description: response.data.description,
-          postcode: response.data.postcode
-        })   
+          postcode: response.data.postcode,
+          latitude: returnPostcode.latitude,
+          longitude: returnPostcode.longitude,
+          viewport: {
+            width: 500,
+            height: 500,
+            latitude: returnPostcode.latitude,
+            longitude: returnPostcode.longitude,
+            zoom: 13
+          }
+        })
       })
       .catch(function (error) {
         console.log(error);
+      });
       })
     }
 
@@ -31,7 +47,7 @@ class BusinessProfile extends React.Component {
     return (
 
       <div>
-        <h6>Your business details</h6>
+        <h6>Seller's details</h6>
               <ul>
                 <li className="collection-item avatar">
                   <i className="material-icons circle">account_circle</i>
@@ -46,8 +62,17 @@ class BusinessProfile extends React.Component {
                   <span className="title">{this.state.postcode}</span>
                 </li>
               </ul>
-        <Map postcode={this.state.postcode}/>
-        <p><BusinessProfileItems /></p>
+              <ReactMapGL
+                {...this.state.viewport}
+                mapboxApiAccessToken={"pk.eyJ1Ijoiam9zaHVhYnJvb2t1ayIsImEiOiJja2QyNW16bnMweGVmMndxbWxnMmdvcXBhIn0.fNfVGNXyTt2ytRPXkR4OmQ"}
+                mapStyle = "mapbox://styles/joshuabrookuk/ckd2666eb1ha61iocgqhcmg0y"
+                onViewportChange={(viewport) => { this.setState({viewport}); }} >
+                <Marker latitude={this.state.latitude} longitude={this.state.longitude}>
+                <img src={pin} alt="Pin" className="center" width="27" height="43"/>
+                </Marker>
+              </ReactMapGL>
+        <BusinessProfileItems />
+        
       </div>
 
     )
