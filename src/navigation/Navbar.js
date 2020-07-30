@@ -12,7 +12,10 @@ class Navbar extends React.Component {
                         <Link to="/" className="brand-logo">Nah'mazon</Link>
                         <ul id="nav-mobile" className="right hide-on-med-and-down">
                             <li>
-                                <Link to="/profile/1">My Profile</Link>
+                                <Link to="/list-items">Customer Hub</Link>
+                            </li>
+                            <li>
+                                <Link to="/create-profile">Business Hub</Link>
                             </li>
                         </ul>
                     </div>
