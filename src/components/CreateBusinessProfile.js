@@ -25,7 +25,7 @@ class FormProfile extends React.Component {
     axios.post('http://localhost:5000/businesses/add', business).then(() => {
       axios.get('http://localhost:5000/businesses')
         .then((response) => {
-        window.location = `http://localhost:3000/business-profile/${response.data[response.data.length - 1]._id}`
+          window.location = `http://localhost:3000/business-profile/${response.data[response.data.length - 1]._id}`
         })
     });
   }
@@ -47,12 +47,12 @@ class FormProfile extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <div className="row">
-
+          <h3>New to Nah'mazon ?</h3>
           <div className="col">
 
-            <div style={{ padding: "10px", minHeight: "350px" }} className="card">
+            <div style={{ padding: "20px", minHeight: "350px" }} className="card">
               <h3>Enter your business details bellow</h3>
               <form onSubmit={this.submitBusinessDetails}>
                 <div className="row">
@@ -79,13 +79,13 @@ class FormProfile extends React.Component {
                       html: 'Details updated!'
                     }}
                   >
-                    <input className='btn' type="submit" value="update" />
+                    <input className='btn' type="submit" value="Create profile" />
                   </Toast>
                 </div>
               </form>
             </div>
           </div>
-          
+
         </div>
 
       </div>
