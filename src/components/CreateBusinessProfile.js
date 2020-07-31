@@ -1,6 +1,7 @@
 import React from 'react';
 import { Toast } from 'react-materialize';
-import axios from 'axios';
+// import axios from 'axios';
+import db from '../firebase/init';
 
 class FormProfile extends React.Component {
   constructor(props) {
@@ -15,19 +16,27 @@ class FormProfile extends React.Component {
   submitBusinessDetails = (e) => {
     e.preventDefault();
 
-
-    const business = {
+    db.collection("businesses").doc().set({
       name: this.state.name,
       description: this.state.description,
-      postcode: this.state.postcode
-    }
-
-    axios.post('http://localhost:5000/businesses/add', business).then(() => {
-      axios.get('http://localhost:5000/businesses')
-        .then((response) => {
-          window.location = `http://localhost:3000/business-profile/${response.data[response.data.length - 1]._id}`
-        })
+      postcode: this.state.postcode,
+      slug: slug
+    }).then(() => {
+      window.location = `${url}business-profile/${slug}`
     });
+
+    // const business = {
+    //   name: this.state.name,
+    //   description: this.state.description,
+    //   postcode: this.state.postcode
+    // }
+
+    // axios.post('http://localhost:5000/businesses/add', business).then(() => {
+    //   axios.get('http://localhost:5000/businesses')
+    //     .then((response) => {
+    //       window.location = `http://localhost:3000/business-profile/${response.data[response.data.length - 1]._id}`
+    //     })
+    // });
   }
 
   setBusinessName = (e) => {

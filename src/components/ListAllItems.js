@@ -1,5 +1,6 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import db from '../firebase/init';
 import { Link } from 'react-router-dom';
 
 class ListProducts extends React.Component {
@@ -14,13 +15,20 @@ class ListProducts extends React.Component {
 
   componentDidMount() {
 
-    axios.get('http://localhost:5000/items/')
-      .then(response => {
-        this.setState({ list: response.data })
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+    db.collection("items")
+      .get()
+      .then(querySnapshot => {
+        const items = querySnapshot.docs.map(doc => doc.data());
+        console.log(items);
+        this.setState({ list: items })
+      });
+    // axios.get('http://localhost:5000/items/')
+    //   .then(response => {
+    //     this.setState({ list: response.data })
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   })
   }
 
   mySearchHandler = (e) => {

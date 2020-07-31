@@ -1,5 +1,6 @@
 import React from 'react';
-import axios from 'axios';
+import db from '../firebase/init';
+// import axios from 'axios';
 
 class ListProducts extends React.Component {
     constructor(props) {
@@ -13,19 +14,28 @@ class ListProducts extends React.Component {
 
     componentDidUpdate() {
 
-        axios.get('http://localhost:5000/items/')
-            .then(response => {
-                var id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1)
+        const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1)
+        db.collection("items")
+            .where("businessID", "==", id)
+            .get()
+            .then(querySnapshot => {
+                const items = querySnapshot.docs.map(doc => doc.data());
+                this.setState({ list: items })
+            });
 
-                var myItems = response.data.filter((item) => {
-                    return item.businessID === id
-                })
+        // axios.get('http://localhost:5000/items/')
+        //     .then(response => {
+        //         var id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1)
 
-                this.setState({ list: myItems })
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+        //         var myItems = response.data.filter((item) => {
+        //             return item.businessID === id
+        //         })
+
+        //         this.setState({ list: myItems })
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     })
     }
 
     render() {
