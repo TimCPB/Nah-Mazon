@@ -1,5 +1,6 @@
 import React from 'react';
 import { Toast } from 'react-materialize';
+import slugify from 'slugify';
 // import axios from 'axios';
 import db from '../firebase/init';
 
@@ -15,6 +16,21 @@ class FormProfile extends React.Component {
 
   submitBusinessDetails = (e) => {
     e.preventDefault();
+    var url = ""
+
+    if (process.env.NODE_ENV === 'development') {
+      url = 'http://localhost:3000/'
+    }
+
+    if (process.env.NODE_ENV === 'production') {
+      url = 'https://nah-mazon.web.app/'
+    }
+
+    const slug = slugify(this.state.name, {
+      replacement: "-",
+      remove: /[*+~.()'"!:@]/g,
+      lower: true
+    });
 
     db.collection("businesses").doc().set({
       name: this.state.name,
