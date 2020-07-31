@@ -5,18 +5,18 @@ class Home extends React.Component {
 	render() {
 		return (
 			<div className='container centre-align'>
-				<div className='row'>
+				<div className='row' style={{ marginLeft: "25%" }}>
 					<div className='col'>
 						<button className='btn'>
 							<Link className='white-text' to='/create-profile'>
-								Business Centre
+								Business Hub
 							</Link>
 						</button>
 					</div>
 					<div className='col'>
 						<button className='btn'>
 							<Link className='white-text' to='/list-items'>
-								View Items
+								Customer Hub
 							</Link>
 						</button>
 					</div>
