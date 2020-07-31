@@ -4,6 +4,7 @@ import ReactMapGL, { Marker } from 'react-map-gl';
 import pin from '../images/pin3.png';
 import BusinessProfileItems from '../components/BusinessProfileItems'
 import db from '../firebase/init';
+import slugify from 'slugify';
 class BusinessProfile extends React.Component {
   constructor(props) {
     super(props)
@@ -19,6 +20,12 @@ class BusinessProfile extends React.Component {
   }
 
   componentDidMount() {
+    const slug = slugify(this.state.name, {
+      replacement: "-",
+      remove: /[*+~.()'"!:@]/g,
+      lower: true
+    });
+
     db.collection("businesses")
       .where("slug", "==", slug)
       .get()
