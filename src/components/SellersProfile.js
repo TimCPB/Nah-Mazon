@@ -4,7 +4,6 @@ import ReactMapGL, { Marker } from 'react-map-gl';
 import pin from '../images/pin3.png';
 import BusinessProfileItems from '../components/BusinessProfileItems'
 import db from '../firebase/init';
-import slugify from 'slugify';
 class BusinessProfile extends React.Component {
   constructor(props) {
     super(props)
@@ -20,19 +19,16 @@ class BusinessProfile extends React.Component {
   }
 
   componentDidMount() {
-    const slug = slugify(this.state.name, {
-      replacement: "-",
-      remove: /[*+~.()'"!:@]/g,
-      lower: true
-    });
+    const slug = window.location.href.substring(window.location.href.lastIndexOf('/') + 1)
 
     db.collection("businesses")
       .where("slug", "==", slug)
       .get()
       .then(querySnapshot => {
         const sellers = querySnapshot.docs.map(doc => doc.data());
+        console.log(sellers)
         this.setState({ seller: sellers[0] })
-      }).then(() => {
+
         var PostcodesIO = require('postcodesio-client');
         var postcodes = new PostcodesIO();
         postcodes.lookup(this.state.seller.postcode).then(returnPostcode => {
@@ -52,6 +48,8 @@ class BusinessProfile extends React.Component {
           })
         })
       });
+
+
 
     // axios.get('http://localhost:5000/businesses/'+window.location.href.substring(window.location.href.lastIndexOf('/') + 1))
     //   .then(response => {
